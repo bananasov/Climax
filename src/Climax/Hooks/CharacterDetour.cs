@@ -1,6 +1,5 @@
-﻿using MonoDetour.Cil;
-using MonoDetour.HookGen;
-using MonoMod.Cil;
+﻿using MonoDetour.HookGen;
+
 
 namespace Climax.Hooks;
 
