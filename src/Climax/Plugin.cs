@@ -19,7 +19,7 @@ public partial class Plugin : BaseUnityPlugin
         Settings = new ClimaxSettings(Config);
         
         // TODO: Make this configurable.
-        DeviceManager = new DeviceManager("Climax", "ws://127.0.0.1:12345");
+        DeviceManager = new DeviceManager("Climax", Settings.ServerURL.Value);
         DeviceManager.ConnectDevices();
         
         // Only hook character when we have sprinting vibrations enabled.
