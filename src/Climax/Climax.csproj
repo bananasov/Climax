@@ -9,7 +9,7 @@
     <AssemblyTitle>Climax</AssemblyTitle>
     <!-- This is the version number of your mod. -->
     <Version>0.1.0</Version>
-    <RootNamespace>PeakPlug</RootNamespace>
+    <RootNamespace>Climax</RootNamespace>
   </PropertyGroup>
 
   <!--
