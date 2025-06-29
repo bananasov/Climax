@@ -22,8 +22,7 @@ public partial class Plugin : BaseUnityPlugin
         DeviceManager = new DeviceManager("Climax", Settings.ServerURL.Value);
         DeviceManager.ConnectDevices();
         
-        // Only hook character when we have sprinting vibrations enabled.
-        if (Settings.SprintingVibrationEnabled.Value) CharacterDetour.Init();
+        CharacterDetour.Init();
         
         Log.LogInfo($"Plugin {Name} v{Version} is loaded!");
     }
