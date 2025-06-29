@@ -1,0 +1,15 @@
+name = "banansov/climax"
+version = "0.1.0"
+description = "PEAK Buttplug.io integration helpers"
+authors = ["bananasov"]
+repository = "https://github.com/bananasov/Climax"
+license = "MIT"
+
+[target]
+environment = "luau"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[dependencies]
+semver = { name = "0x5eal/semver", version = "^0.1.1" }

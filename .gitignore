@@ -227,3 +227,4 @@ artifacts/**/*.zip
 artifacts/**
 Config.Build.user.props
 .idea
+luau_packages/
