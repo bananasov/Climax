@@ -14,9 +14,9 @@ type PackageMetadata = {
 	version: any,
 }
 
-local possible_versions: { [string]: PackageMetadata } = {}
+local possible_versions: { PackageMetadata } = {}
 
-for _, file in fs.readDir(THUNDERSTORE_ARTIFACTS_DIRECTORY) do
+for index, file in fs.readDir(THUNDERSTORE_ARTIFACTS_DIRECTORY) do
 	local components = file:split("-")
 	local team_name, package_name, version_plus_extension = table.unpack(components)
 	local version = version_plus_extension:sub(1, -5) -- Why -5 instead of -4? no fucking idea probably a null byte
@@ -27,19 +27,15 @@ for _, file in fs.readDir(THUNDERSTORE_ARTIFACTS_DIRECTORY) do
 		package_name = package_name,
 		version = semver_version,
 	}
-	possible_versions[file] = package
+	possible_versions[index] = package
 end
+
 
 local highest_version_package = nil
 
-local package_list = {}
-for filename, package in pairs(possible_versions) do
-	table.insert(package_list, package)
-end
-
-for i = 1, #package_list, 2 do
-	local package1 = package_list[i]
-	local package2 = package_list[i + 1]
+for i = 1, #possible_versions, 2 do
+	local package1 = possible_versions[i]
+	local package2 = possible_versions[i + 1]
 
 	local current_highest = nil
 
