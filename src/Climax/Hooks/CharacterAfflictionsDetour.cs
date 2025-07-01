@@ -19,15 +19,17 @@ public static class CharacterAfflictionsDetour
     {
         ILWeaver w = new(info);
 
+        // GUIManager.instance.AddStatusFX(statusType, amount);
         Instruction inst = null!;
         var matchResult = w.MatchRelaxed(
-            x => x.MatchLdarg(0),
-            x => x.MatchLdnull(),
-            x => x.MatchCall(out _),
-            x => x.MatchLdcI4(1) && w.SetInstructionTo(ref inst, x),
-            x => x.MatchRet() || x.MatchBr(out _));
+            x => x.MatchLdsfld<GUIManager>(nameof(GUIManager.instance)), 
+            x => x.MatchLdarg(1),
+            x => x.MatchLdarg(2),
+            x => x.MatchCallvirt<GUIManager>(nameof(GUIManager.AddStatusFX)) && w.SetInstructionTo(ref inst, x)
+            );
         matchResult.ThrowIfFailure();
 
+        // Insert `VibrateYerBooty(statusType, amount)` after `GUIManager.instance.AddStatusFX(statusType, amount)`
         var callInst = w.CreateCall(VibrateYerBooty);
         w.InsertAfter(inst, Instruction.Create(OpCodes.Ldarg_1), Instruction.Create(OpCodes.Ldarg_2), callInst);
     }
