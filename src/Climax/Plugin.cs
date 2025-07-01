@@ -23,6 +23,7 @@ public partial class Plugin : BaseUnityPlugin
         DeviceManager.ConnectDevices();
         
         CharacterDetour.Init();
+        CharacterAfflictionsDetour.Init();
         
         Log.LogInfo($"Plugin {Name} v{Version} is loaded!");
     }
