@@ -12,7 +12,7 @@ public static class CharacterAfflictionsDetour
     public static void Init()
     {
         // NOTE: We could also have used CharacterMovement.CheckFallDamage, but this is more expandable upon.
-        On.CharacterAfflictions.AddStatus.ILHook(ILHook_AddStatus_AfflictionVibration);
+        if (Plugin.Settings.AfflictionVibrationEnabled.Value) On.CharacterAfflictions.AddStatus.ILHook(ILHook_AddStatus_AfflictionVibration);
     }
 
     private static void ILHook_AddStatus_AfflictionVibration(ILManipulationInfo info)

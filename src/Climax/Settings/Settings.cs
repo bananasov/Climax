@@ -12,4 +12,8 @@ public class ClimaxSettings(ConfigFile config)
     public readonly ConfigEntry<bool> JumpingVibrationEnabled = config.Bind("Vibrations.Jumping", "Enabled", true, "Whether or not using jumping makes your toys vibrate");
     public readonly ConfigEntry<float> JumpingVibrationIntensitySmall = config.Bind("Vibrations.Sprinting", "Small Intensity", 0.2f, "The intensity of the vibration when you perform a small jump");
     public readonly ConfigEntry<float> JumpingVibrationIntensityHuge = config.Bind("Vibrations.Sprinting", "Huge Intensity", 0.5f, "The intensity of the vibration when you perform a big jump");
+
+    public readonly ConfigEntry<bool> AfflictionVibrationEnabled = config.Bind("Vibrations.Afflictions", "Enabled",
+        true, "Whether or not to vibrate on an injury or fire damage");
+    
 }
